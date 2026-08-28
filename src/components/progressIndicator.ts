@@ -1,5 +1,7 @@
 export class ProgressIndicator {
   private element: HTMLElement;
+  private current: number = 0;
+  private total: number = 0;
 
   constructor() {
     this.element = this.createElement();
