@@ -15,7 +15,7 @@ const CONFIG = {
 
     // Music (optional). Point this at a file in assets/, e.g. 'assets/music.mp3'.
     // Leave '' to run with no music at all — the button simply does nothing.
-    MUSIC_SRC: '',
+    MUSIC_SRC: 'Ekdev Limbu - Fijeko Kesh.mp3',
     MUSIC_VOLUME: 0.35,
 
     // Limits (performance safeguards — nothing here grows unbounded)
@@ -124,6 +124,26 @@ function initIntro() {
     }, 3200);
 
     openGardenBtn.addEventListener('click', openGarden, { once: true });
+    
+    // Auto-start music on first interaction
+    if (CONFIG.MUSIC_SRC) {
+        const startMusicOnInteraction = () => {
+            if (!state.isPlaying) {
+                bgMusic.play().then(() => {
+                    state.isPlaying = true;
+                    musicBtn.textContent = '🔇';
+                    musicBtn.setAttribute('aria-pressed', 'true');
+                }).catch(() => { /* autoplay blocked */ });
+            }
+            document.removeEventListener('click', startMusicOnInteraction);
+            document.removeEventListener('touchstart', startMusicOnInteraction);
+            document.removeEventListener('keydown', startMusicOnInteraction);
+        };
+        
+        document.addEventListener('click', startMusicOnInteraction);
+        document.addEventListener('touchstart', startMusicOnInteraction);
+        document.addEventListener('keydown', startMusicOnInteraction);
+    }
 }
 
 function spawnIntroFirefly() {
@@ -774,6 +794,20 @@ function toggleMusic() {
     musicBtn.setAttribute('aria-pressed', String(state.isPlaying));
 }
 
+// Also try to autoplay music when page loads (may be blocked by browsers)
+function attemptAutoplay() {
+    if (CONFIG.MUSIC_SRC && !state.isPlaying) {
+        bgMusic.play().then(() => {
+            state.isPlaying = true;
+            musicBtn.textContent = '🔇';
+            musicBtn.setAttribute('aria-pressed', 'true');
+        }).catch(() => {
+            // Autoplay blocked - will start on first interaction
+            console.log('Autoplay blocked - music will start on first interaction');
+        });
+    }
+}
+
 function startIdleSway() {
     let last = 0;
     function frame(t) {
@@ -792,4 +826,7 @@ function startIdleSway() {
 /* =========================================================
    BOOT
    ========================================================= */
-document.addEventListener('DOMContentLoaded', initIntro);
+document.addEventListener('DOMContentLoaded', () => {
+    initIntro();
+    attemptAutoplay();
+});
