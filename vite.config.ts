@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/she-wants-flowers/',
+  base: '/she-wants-flower/',
   build: {
     outDir: 'dist',
     sourcemap: true,
