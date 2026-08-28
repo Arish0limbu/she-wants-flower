@@ -3,10 +3,8 @@ import { config } from '../config';
 import { Flower } from './flowers';
 
 export class BouquetAnimation {
-  private container: HTMLElement;
-
-  constructor(container: HTMLElement) {
-    this.container = container;
+  constructor() {
+    // Constructor for future use
   }
 
   public async assembleBouquet(flowers: Flower[]): Promise<void> {
