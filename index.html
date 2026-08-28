@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="A magical interactive flower garden, grown one tap at a time.">
+    <title>She Wants Flowers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============ INTRO SCENE ============ -->
+    <div class="intro-scene" id="introScene">
+        <div class="intro-sky">
+            <div class="intro-moon"></div>
+            <div class="intro-stars" id="introStars"></div>
+            <div class="intro-fireflies" id="introFireflies"></div>
+            <div class="intro-fog"></div>
+        </div>
+        <div class="intro-content">
+            <p class="intro-line intro-line-1" id="introLine1">She said she wants flowers&hellip;</p>
+            <p class="intro-line intro-line-2" id="introLine2">So I made something for her.</p>
+            <button class="open-garden-btn" id="openGardenBtn">
+                <span>Open Your Garden</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============ GARDEN SCENE ============ -->
+    <div class="garden-container" id="gardenContainer">
+        <div class="sky">
+            <div class="moon"></div>
+            <div class="stars" id="stars"></div>
+            <div class="fog"></div>
+        </div>
+
+        <div class="scene" id="scene">
+            <div class="grass-container" id="grassContainer"></div>
+            <div class="flowers-container" id="flowersContainer"></div>
+            <div class="particles-container" id="particlesContainer"></div>
+            <div class="fireflies-container" id="firefliesContainer"></div>
+            <div class="tap-zone" id="tapZone"></div>
+        </div>
+
+        <div class="ui-controls">
+            <button class="music-btn" id="musicBtn" aria-label="Toggle music" aria-pressed="false">🎵</button>
+            <div class="flower-counter" id="flowerCounter" aria-live="polite">0 flowers</div>
+        </div>
+
+        <div class="hint-text" id="hintText">Tap anywhere below to grow a flower</div>
+
+        <!-- Final cinematic sequence -->
+        <div class="finale" id="finale">
+            <div class="finale-heart" id="finaleHeart"></div>
+            <div class="finale-messages" id="finaleMessages">
+                <p class="finale-line" id="finaleLine1"></p>
+                <p class="finale-line" id="finaleLine2"></p>
+                <p class="finale-line" id="finaleLine3"></p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop preload="none"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
