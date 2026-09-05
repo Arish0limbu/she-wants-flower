@@ -257,15 +257,15 @@ function createGrass(fixedX) {
     grass.style.left = x + 'px';
 
     const bladeCount = Math.max(2, Math.round((3 + Math.floor(Math.random() * 4)) * CONFIG.GRASS_DENSITY));
-    const baseHeight = 22 + Math.random() * 34;
+    const baseHeight = 35 + Math.random() * 55;
 
     const frag = document.createDocumentFragment();
     for (let i = 0; i < bladeCount; i++) {
         const blade = document.createElement('div');
         blade.className = 'grass-blade';
 
-        const height = baseHeight + (Math.random() * 20 - 10);
-        const width = 2 + Math.random() * 2;
+        const height = baseHeight + (Math.random() * 30 - 15);
+        const width = 1.5 + Math.random() * 5;
         const rotation = (Math.random() * 30 - 15);
 
         blade.style.height = height + 'px';
