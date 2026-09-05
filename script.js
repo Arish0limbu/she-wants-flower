@@ -112,6 +112,7 @@ if (CONFIG.MUSIC_SRC) {
    ========================================================= */
 function initIntro() {
     scatterStars(introStars, 60);
+    startFallingStars(introStars);
     for (let i = 0; i < 4; i++) {
         setTimeout(() => spawnIntroFirefly(), i * 900);
     }
@@ -173,6 +174,24 @@ function scatterStars(container, count) {
     container.appendChild(frag);
 }
 
+function startFallingStars(container) {
+    setInterval(() => {
+        if (Math.random() > 0.7) { // 30% chance every interval
+            createFallingStar(container);
+        }
+    }, 2000);
+}
+
+function createFallingStar(container) {
+    const star = document.createElement('div');
+    star.className = 'falling-star';
+    star.style.left = (50 + Math.random() * 40) + '%';
+    star.style.top = (Math.random() * 30) + '%';
+    star.style.animationDuration = (2 + Math.random() * 2) + 's';
+    container.appendChild(star);
+    setTimeout(() => star.remove(), 4000);
+}
+
 function openGarden() {
     if (state.gardenOpened) return;
     state.gardenOpened = true;
@@ -198,6 +217,7 @@ function openGarden() {
    ========================================================= */
 function initGarden() {
     scatterStars(starsContainer, 70);
+    startFallingStars(starsContainer);
     startGrassGrowth();
     startFireflies();
     scene.addEventListener('pointerdown', handleTap);
