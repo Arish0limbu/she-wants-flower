@@ -16,7 +16,7 @@ const CONFIG = {
     // Music (optional). Point this at a file in assets/, e.g. 'assets/music.mp3'.
     // Leave '' to run with no music at all — the button simply does nothing.
     MUSIC_SRC: 'Ekdev Limbu - Fijeko Kesh.mp3',
-    MUSIC_: 5,
+    MUSIC_VOLUME: 0.35,
 
     // Limits (performance safeguards — nothing here grows unbounded)
     MAX_FLOWERS: 25,
